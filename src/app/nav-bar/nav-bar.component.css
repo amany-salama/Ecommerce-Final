@@ -1,0 +1,154 @@
+/* Base styles for mobile (Mobile-First) */
+.main-menu ul {
+    display: none; /* Hidden by default */
+    flex-direction: column; /* Stack menu items vertically */
+    align-items: center;
+}
+
+.main-menu.show ul {
+    display: flex; /* Show menu when toggled */
+}
+
+.site-logo img {
+    width:50px;
+    max-width: 70px;
+    height: auto;
+}
+
+.login-start-container{
+    box-sizing: border-box;
+    display:inline-block;
+    justify-content:right;
+    align-items:flex-start;
+    justify-content: right;
+}
+.start ul{
+    justify-content:right;
+    align-items:flex-start;
+    justify-content: right;
+}
+
+.mobile-menu {
+    display: block;
+    cursor: pointer;
+}
+
+.header-icons .shopping-cart,
+.header-icons .search-bar-icon {
+    display: none;
+}
+
+/* Search area */
+.search-area {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    z-index: 999;
+}
+
+.search-area.show {
+    display: none;
+}
+
+.search-bar {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20%;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px;
+}
+
+.search-bar button {
+    margin-top: 10px;
+}
+
+/* Tablet and above (768px) */
+@media (min-width: 768px) {
+    .main-menu ul {
+        display: inline-flex;
+        box-sizing: border-box;
+        flex-direction: row; /* Align menu horizontally */
+        /* justify-content: space-between; */
+    }
+    
+    .mobile-menu {
+        display: none;
+    }
+
+    .header-icons .shopping-cart,
+    .header-icons .search-bar-icon {
+        display: inline-flex;
+    }
+
+    .site-logo img {
+        max-width: 45px;
+    }
+}
+
+
+/* Desktop and above (1025px) */
+@media (min-width: 1025px) {
+    .main-menu ul {
+    justify-content:space-between;
+         /* Full-width alignment */
+    }
+
+    .header-icons .shopping-cart,
+    .header-icons .search-bar-icon {
+        font-size: 18px;
+    }
+
+    .site-logo img {
+        max-width: 70px;
+    }
+}
+
+/* Sticky Navbar */
+#sticker {
+    position: sticky;
+    top:0;
+    z-index: 1000000000000;
+    background-color: #020013e7;
+}
+nav{
+    background-color: transparent;
+    /* background-image: url(/assets/images/elderly-woman-shopping-customer-day_23-2151638449.jpg);  */
+}
+
+
+
+
+/*counter -> cart icon*/
+.cart-count {
+    height: 30px;
+    width: 30px;
+    background-color: #F28123;
+    color: white;
+    border-radius: 50%;
+    padding: 4px 8px;
+    font-size: 12px;
+    position: absolute;
+    top: -10px;  /* Adjust this value to move it higher or lower */
+    right: -7px; /* Adjust this value to move it horizontally */
+    font-weight: bold;
+  }
+  
+.current-list-item a:hover,
+.cart-count:hover {
+
+  color:#F28123
+}
+
+.cart-count:hover {
+    background-color: white; 
+    color:#F28123
+  }
+    
+  

@@ -1,0 +1,47 @@
+<!-- product section -->
+<!-- the updated code -->
+<div class="product-section mt-150 mb-150">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-lg-6 offset-lg-3 text-center">
+          <div class="section-title">
+            <h3 style="align-items:center;"><span class="orange-text">Our</span> Products</h3>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div *ngFor="let item of productlist; trackBy: trackById" class="col-lg-3 col-md-6 text-center">
+          <div class="single-product-item">
+            <div class="product-image">
+              <!-- <a [routerLink]="['/details', item.id]" (click)="getproductbyid(item.id)"> -->
+                <a [routerLink]="['/details', item.id]" routerLink="details" (click)="getproductbyid(item.id)">
+                <img [src]="item.images[0]" alt="{{item.title}}" 
+                 matTooltip="Click to Show Details" matTooltipPosition="above" matTooltipShowDelay="100">
+              </a>
+            </div>
+            <h3>{{item.title}}</h3>
+            <p class="product-price">{{item.price}} $</p>
+            <a class="cart-btn" (click)="addToCart(item)"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+        
+           <!-- @for(item of productlist ; track item.id){ 
+               <div class="col-lg-3 col-md-6 text-center">
+                   <div class="single-product-item">
+                       <div class="product-image">
+                           <a href="" routerLink="details"><img [src]="item.images[0]" alt=""></a>
+                          
+                       </div>
+                       <h3>{{item.title}}</h3>
+                       <p class="product-price">{{item.price}} $</p>
+                       <a href="" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                   </div>
+               </div>  -->
+           <!-- } -->
+       <!-- </div>  -->
+   <!-- </div>  
+</div> -->

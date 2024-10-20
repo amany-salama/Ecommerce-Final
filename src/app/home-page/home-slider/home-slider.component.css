@@ -1,0 +1,95 @@
+.homepage-slider {
+  position: relative;
+  height: 700px; /* Adjust height as needed */
+  overflow: hidden;
+  /* background-image: url("https://images.hdqwalls.com/download/beach-minimal-morning-4k-q2-1920x1080.jpg");  */
+}
+
+.single-homepage-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  transition: opacity 0.5s ease-in-out;
+}
+.single-homepage-slider.homepage-bg{
+  min-height: 100vh;
+  margin-top: -6rem;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQMBoIGzmSa6iPNs12jJcsnqD3bXMVkbRdP8dbGXK46fn1TGcla) center/cover;
+
+}
+
+.single-homepage-slider.homepage-bg-1 {
+  background-image: url(/assets/images/closeup-detail-female-hand-holding-shopping-bag.jpg); 
+  object-fit: cover;
+  height: 100vh;
+}
+.single-homepage-slider.homepage-bg-2 {
+  background-image: url(/assets/images/portrait-man-going-out-shopping-various-consumer-goods.jpg);
+  object-fit: cover; 
+  height: 100vh;
+}
+.single-homepage-slider.homepage-bg-3 {
+  background-image: url(/assets/images/elderly-woman-shopping-customer-day_23-2151638449.jpg);
+  object-fit: cover;
+  height: 100vh;
+}
+
+.single-homepage-slider.active {
+  opacity: 1;
+}
+
+.single-homepage-slider.inactive {
+  opacity: 0;
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white; /* Adjust color as needed */
+  text-align: center;
+  z-index: 1;
+}
+
+.hero-text-tablecell {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.subtitle {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.hero-btns {
+  margin-top: 20px;
+}
+
+.boxed-btn,
+.bordered-btn {
+  padding: 10px 20px;
+  border: 1px solid white;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.boxed-btn {
+  background-color: white;
+  color: rgb(7, 2, 46);
+}
+
+.bordered-btn {
+  background-color: transparent;
+}

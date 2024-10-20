@@ -21,23 +21,46 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
+              "src/assets/images",
               {
                 "glob": "**/*",
                 "input": "public"
               }
             ],
             "styles": [
-              "src/styles.css"
+              "@angular/material/prebuilt-themes/cyan-orange.css",
+              "src/styles.css",
+              "src/assets/css/bootstrap.css",
+              "src/assets/css/bootstrap.min.css",
+              "src/assets/css/all.min.css",
+              "src/assets/css/animate.css",
+              "src/assets/css/magnific-popup.css",
+              "src/assets/css/main.css",
+              "src/assets/css/meanmenu.min.css",
+              "src/assets/css/owl.carousel.css",
+              "src/assets/css/responsive.css"
             ],
-            "scripts": []
+            "scripts": [
+                "src/assets/js/main.js",
+                "src/assets/js/owl.carousel.min.js",
+                "src/assets/js/jquery-1.11.3.min.js",
+                "src/assets/js/jquery.countdown.js",
+                "src/assets/js/jquery.isotope-3.0.6.min.js",
+                "src/assets/js/jquery.magnific-popup.min.js",
+                "src/assets/js/jquery.meanmenu.min.js",
+                "src/assets/js/sticker.js",
+                "src/assets/js/waypoints.js",
+                "src/assets/js/bootstrap.min.js",
+                "src/assets/js/carousel.js"
+            ]
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "2mb",
+                  "maximumError": "3MB"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -85,6 +108,7 @@
               }
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/cyan-orange.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -92,5 +116,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "3b9cbded-5e69-4e6f-8180-81cb78b157ea"
   }
 }

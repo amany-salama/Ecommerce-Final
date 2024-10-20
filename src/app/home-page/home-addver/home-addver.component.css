@@ -1,0 +1,7 @@
+.shop-banner img {
+    display:-ms-grid;
+    align-content:right;
+    justify-items: right;
+    width: 200px;
+
+}

@@ -1,0 +1,44 @@
+<div class="container mt-4">
+  <h2>Your Cart</h2>
+  
+  <div class="empty-cart" *ngIf="cartItems.length === 0">
+    <p>Your cart is empty</p>
+  </div>
+
+  <div class="cart-items" *ngIf="cartItems.length > 0">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Total</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cartItems">
+          <td>
+            <img [src]="item.images[0]" alt="{{ item.name }}" width="50" class="me-2"> <!-- Display product image in Product column -->
+            {{ item.name }}
+          </td>
+          <td>
+            <button class="btn btn-danger btn-sm" (click)="decreaseQuantity(item)">-</button>
+            {{ item.quantity }}
+            <button class="btn  btn-success btn-sm" (click)="increaseQuantity(item)">+</button>
+          </td>
+          <td>{{ item.price | currency }}</td>
+          <td>{{ (item.price * item.quantity) | currency }}</td>
+          <td>
+            <button class="btn btn-danger" (click)="removeFromCart(item)">Remove</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="cart-summary">
+      <h3>Total Price: {{ totalPrice | currency }}</h3>
+      <button class="btn btn-success" (click)=" goToCheckout()">Proceed to Checkout</button>
+    </div>
+  </div>
+</div>
