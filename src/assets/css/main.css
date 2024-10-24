@@ -1585,15 +1585,15 @@ html {
   
   ----------------------------------------------------------------------------- */
   .news-bg-1 {
-    background-image: url(https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQQVcWauoFUWfb9hFO3QNx9UqAjVqs1HT-raRJOVWtqZphEs8M3);
+    background-image: url(/assets/images/2.jpg);
   }
   
   .news-bg-2 {
-    background-image: url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTxuTS9n5YcaE8Ath8EdsfRkKdJplOt6ct7N0CrU7qh_VkB6DcN);
+    background-image: url(/assets/images/closeup-detail-female-hand-holding-shopping-bag.jpg);
   }
   
   .news-bg-3 {
-    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdctPUtL298RcwFsdcapSzrbjmgqX2PNzdm_Uiim32HdLSbbJs);
+    background-image: url(/assets/images/makeup-kit.jpg);
   }
   
   .news-bg-4 {

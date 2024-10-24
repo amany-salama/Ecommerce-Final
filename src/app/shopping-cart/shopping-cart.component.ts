@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CartService } from '../Services/cart-services/cart.service';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../auth/authentication.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -15,7 +16,11 @@ export class ShoppingCartComponent {
   cartItems: any[] = []; // Declare cartItems
   totalPrice: number = 0; // Initialize totalPrice
   router = inject (Router);
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService , 
+    private authService: AuthenticationService
+
+  ) {}
 
   ngOnInit() {
     this.cartItems = this.cartService.getCart(); // Get items from cart service
@@ -46,7 +51,15 @@ export class ShoppingCartComponent {
     this.updateCart(); // Refresh cart
   }
   
+  // goToCheckout() {
+  //   this.router.navigate(['/checkout']); // Navigate to checkout route
+  // }
+
   goToCheckout() {
-    this.router.navigate(['/checkout']); // Navigate to checkout route
+    if (this.authService. isAuthenticated()) {
+      this.router.navigate(['/checkout']); // Navigate to checkout if logged in
+    } else {
+      this.router.navigate(['/login']); // Redirect to login if not logged in
+    }
   }
 }

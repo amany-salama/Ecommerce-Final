@@ -6,8 +6,6 @@ import { CartService } from '../../Services/cart-services/cart.service';
 import { RouterModule } from '@angular/router';
 import {MatTooltipModule}from '@angular/material/tooltip';
 
-
-
 @Component({
   selector: 'app-productlist',
   standalone: true,
@@ -18,8 +16,16 @@ import {MatTooltipModule}from '@angular/material/tooltip';
 export class ProductlistComponent implements OnInit {
   productlist:Iproducts[]=[];
   filteredProducts:Iproducts[]=[];
-  searchTerm = '';
-  selectedCategory = '';
+  categories = [
+    { title: 'All', filter: '*' },
+    { title: 'Beauty', filter: 'beauty' },
+    { title: 'Fragrance', filter: 'fragrances' },
+    { title: 'Furniture', filter: 'furniture' },
+    { title: 'Grocery', filter: 'groceries' }
+  ];
+  activeFilter: string = '*';
+  // searchTerm = '';
+  // selectedCategory = '';
   trackById(index: number, item: any): number {
     return item.id;
   }
@@ -32,12 +38,30 @@ ngOnInit() {
     this.filteredProducts = this.productlist;
     })
   }
-  
+
+  ///apply filter ///////////
+  applyFilter(filter: string): void {
+    this.activeFilter = filter;
+    console.log('Active Filter:', filter);
+   // Add filtering logic here if necessary
+    this.activeFilter = filter;
+    if (filter == '*') {
+      this.filteredProducts = this.productlist;
+    } else {
+      this.filteredProducts = this.productlist.filter(product => product.category == filter);
+    }
+    console.log(this.filteredProducts)
+  }
+  // method for styling
+  isActive(filter: string): boolean {
+    return this.activeFilter == filter;
+  }
   // Define the addToCart method -> shopping cart
-  addToCart(product: Iproducts) {
+   addToCart(product: Iproducts) {
   this.cartService.addProduct(product); 
     // alert(`${product.title} added to cart!`); 
   }
+ 
 
   //define Thegetproductbyid function-- to show product details//
     getproductbyid(productId:number){
@@ -46,25 +70,25 @@ ngOnInit() {
 //////////////////////////////////////////////
   //Filterproguct by category
   
-  filterProducts() {
-  this.filteredProducts = this.productlist.filter(product =>
-    product.title.toLowerCase().includes(this.searchTerm.toLowerCase()) &&
-    (this.selectedCategory === '' || product.category === this.selectedCategory)
+    //   filterProducts() {
+    //   this.filteredProducts = this.productlist.filter(product =>
+    //     product.title.toLowerCase().includes(this.searchTerm.toLowerCase()) &&
+    //     (this.selectedCategory === '' || product.category === this.selectedCategory)
 
-  );
-}
+    //   );
+    // }
 //sort products
-sortProducts(sortBy: string) {
-  this.filteredProducts.sort((a, b) => {
-    if (sortBy === 'price') {
-      return a.price - b.price;
-    } else if (sortBy === 'title') {
-      return a.title.localeCompare(b.title);   
+    // sortProducts(sortBy: string) {
+    //   this.filteredProducts.sort((a, b) => {
+    //     if (sortBy === 'price') {
+    //       return a.price - b.price;
+    //     } else if (sortBy === 'title') {
+    //       return a.title.localeCompare(b.title);   
 
-    }
-    return 0;
-  });
-}
+    //     }
+    //     return 0;
+    //   });
+    // }
 }
 
 

@@ -1,0 +1,33 @@
+/* General Styles */
+.auth-text {
+    font-size: 16px;
+    color: #393f81;
+    /* margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem; */
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .auth-link {
+    color: #393f81;
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .auth-link:hover {
+    color: #1e2b6b;
+    border-bottom: 2px solid #1e2b6b;
+    cursor: pointer;
+  }
+  
+  /* Responsive for larger screens */
+  @media (min-width: 992px) {
+    .auth-text {
+      font-size: 18px;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+    }
+  }
+  

@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../Services/cart-services/cart.service';
 import { Product } from '../interfaces/product';
 import { CommonModule } from '@angular/common';
+import { PaypalButtonComponent } from '../paypal-button/paypal-button.component';
 
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   standalone:true,
-  imports:[CommonModule],
+  imports:[CommonModule , PaypalButtonComponent],
   styleUrls: ['./checkout.component.css'],
 })
 export class CheckoutComponent implements   OnInit {
