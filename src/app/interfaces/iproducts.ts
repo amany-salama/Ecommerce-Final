@@ -2,6 +2,7 @@ export interface Iproducts {
   id: number;
   title: string;
   name: string; //add for cart service
+  quantity?: number;  // add for cart localstoage
   description: string;
   category: string;
   price: number;

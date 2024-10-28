@@ -8,6 +8,7 @@ import { Product } from '../../interfaces/product';
 export class CartService {
   private cart: Product[] = []; // Array of products in the cart
   private cartItemCount = new BehaviorSubject(0);  // Observable to track cart count
+  
   private updateLocalStorage() {
     try {
       localStorage.setItem('Angular18Local', JSON.stringify(this.cart));
@@ -15,32 +16,30 @@ export class CartService {
       console.error('Error saving cart to localStorage:', error);
     }
   }
+  
   constructor() {
     const storedCart = localStorage.getItem('Angular18Local');
     if (storedCart) {
       this.cart = JSON.parse(storedCart);
       this.cartItemCount.next(this.cart.reduce((count, item) => count + (item.quantity || 1), 0)); // Update cart count
-     }
+    }
   }
 
   // Add product to cart
   addProduct(product: Product) {
-    let added = false;
-    for (let p of this.cart) {
-      if (p.id === product.id) {
-        this.cart.push(product);
-       
-        p.quantity! += 1; // If product exists, increment quantity
-        added = true;
-        break;
-      }
-    }
-    if (!added) {
-      product.quantity = 1; // If product is new, set quantity to 1
+    const existingProduct = this.cart.find(p => p.id === product.id);
+
+    if (existingProduct) {
+      // If the product already exists, increment its quantity
+      existingProduct.quantity! += 1;
+    } else {
+      // If product is new, set quantity to 1 and add to cart
+      product.quantity = 1;
       this.cart.push(product);
     }
+
     this.updateLocalStorage();
-    this.cartItemCount.next(this.cartItemCount.value + 1); // Update cart count
+    this.cartItemCount.next(this.cart.reduce((count, item) => count + (item.quantity || 1), 0)); // Update cart count
   }
 
   // Get all products in the cart
@@ -60,23 +59,22 @@ export class CartService {
 
   // Remove a product from the cart
   removeFromCart(product: Product) {
-    for (let [index, p] of this.cart.entries()) {
-      if (p.id === product.id) {
-        if (p.quantity! > 1) {
-          this.updateLocalStorage();
-          p.quantity! -= 1; // Decrease quantity if more than 1
-        } else {
-          this.cartItemCount.next(this.cartItemCount.value - p.quantity!);
-          this.cart.splice(index, 1);
-          this.updateLocalStorage();
-           // Remove product if quantity is 1
-        }
-        break;
+    const existingProductIndex = this.cart.findIndex(p => p.id === product.id);
+
+    if (existingProductIndex !== -1) {
+      const existingProduct = this.cart[existingProductIndex];
+      if (existingProduct.quantity! > 1) {
+        // Decrease quantity if more than 1
+        existingProduct.quantity! -= 1;
+      } else {
+        // Remove product if quantity is 1
+        this.cart.splice(existingProductIndex, 1);
       }
+
       this.updateLocalStorage();
+      this.cartItemCount.next(this.cart.reduce((count, item) => count + (item.quantity || 1), 0)); // Update cart count
     }
   }
-  
 
   // Clear the cart
   clearCart() {
